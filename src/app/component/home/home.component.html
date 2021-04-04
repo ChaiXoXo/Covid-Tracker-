@@ -1,0 +1,51 @@
+<!-- <img src="assets/images/CVD1.jpg" class="rotate" alt="" style="font-size: small;"> -->
+<div class="jumbotron bg-white text-center">
+    <h1 class="display-4">Corona Covid Tracker</h1>
+    <hr>
+    <app-dashboard [totalConfirmed]='totalConfirmed' [totalActive]='totalActive' [totalDeaths]='totalDeaths'
+        [totalRecovered]='totalRecovered'></app-dashboard>
+</div>
+
+<hr>
+<div class="ui form">
+    <div class="inline fields">
+        <label for="fruit" style="margin-left:50px;"><h4>Select your case:</h4></label>
+        <div class="field">
+            <div class="ui radio checkbox">
+                <input type="radio" id="confirmed" value="confirmed" #confirmed (click)="updateValues(confirmed)"
+                    name="caseType" checked="" tabindex="0" class="hidden">
+                <label for="confirmed">Confirmed</label>
+            </div>
+        </div>
+        <div class="field">
+            <div class="ui radio checkbox">
+                <input type="radio" id="active" value="active" #active (click)="updateValues(active)" name="caseType"
+                    tabindex="0" class="hidden">
+                <label for="active">Active</label>
+            </div>
+        </div>
+        <div class="field">
+            <div class="ui radio checkbox">
+                <input type="radio" id="deaths" value="deaths" #deaths (click)="updateValues(deaths)" name="caseType"
+                    tabindex="0" class="hidden">
+                <label for="deaths">Deaths</label>
+            </div>
+        </div>
+        <div class="field">
+            <div class="ui radio checkbox">
+                <input type="radio" id="recovered" value="recovered" #recovered (click)="updateValues(recovered)"
+                    name="caseType" tabindex="0" class="hidden">
+                <label for="recovered">Recovered</label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <google-chart [type]="chart.PieChart" [options]="chart.options" style="width: 100%;" [height]="chart.height"
+            [data]="dataTable"></google-chart>
+        </div>
+        <div class="col">
+            <google-chart [type]="chart.ColumnChart" [options]="chart.options" style="width: 100%;" [height]="chart.height"
+            [data]="dataTable"></google-chart>
+        </div>
+    </div>
